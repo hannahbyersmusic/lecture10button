@@ -1,10 +1,12 @@
 #include "BetterButton.h"
 
+//declaring each button and it's respective pin
 int button1Pin = 32;
 int button2Pin = 31;
 int button3Pin = 30;
 int button4Pin = 29;
 
+//creating an instance for each button
 BetterButton button1(button1Pin, 0);
 BetterButton button2(button2Pin, 1);
 BetterButton button3(button3Pin, 2);
@@ -24,6 +26,7 @@ void setup() {
 }
 
 void loop() {
+  //creating a 4 button MIDI controller
   button1.process();
   button2.process();
   button3.process();
@@ -33,6 +36,7 @@ void loop() {
 void onPress(int val) {
   Serial.print(val);
   Serial.println(" on");
+  //turning on a MIDI note each time a button is pressed
   if (val == 0) {
     usbMIDI.sendNoteOn(60, 127, 1);
   }
@@ -50,6 +54,7 @@ void onPress(int val) {
 void onRelease(int val) {
   Serial.print(val);
   Serial.println(" off");
+  //turning off a MIDI note each time the button is released
     if (val == 0) {
     usbMIDI.sendNoteOff(60, 127, 1);
   }
