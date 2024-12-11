@@ -34,8 +34,8 @@ void loop() {
 }
 
 void onPress(int val) {
-  Serial.print(val);
-  Serial.println(" on");
+  // Serial.print(val);
+  // Serial.println(" on");
   //turning on a MIDI note each time a button is pressed
   if (val == 0) {
     usbMIDI.sendNoteOn(60, 127, 1);
@@ -52,8 +52,8 @@ void onPress(int val) {
 }
 
 void onRelease(int val) {
-  Serial.print(val);
-  Serial.println(" off");
+  // Serial.print(val);
+  // Serial.println(" off");
   //turning off a MIDI note each time the button is released
     if (val == 0) {
     usbMIDI.sendNoteOff(60, 127, 1);
